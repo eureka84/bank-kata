@@ -1,8 +1,8 @@
 package com.eureka.katas
 
 class Account(
-    private val display: Display,
-    private val balance: Balance
+    private val balancePrinter: BalancePrinter,
+    private val balance: Balance = Balance(DefaultClock())
 ) {
 
     fun deposit(amount: Int){
@@ -12,6 +12,6 @@ class Account(
         balance.decreaseBy(amount)
     }
     fun printStatement(){
-        TODO("Implement me")
+        balancePrinter.print(balance)
     }
 }

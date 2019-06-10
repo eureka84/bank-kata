@@ -11,10 +11,12 @@ data class Deposit(override val amount: Int, override val date: LocalDateTime) :
 data class Withdraw(override val amount: Int, override val date: LocalDateTime) : Operation()
 
 
-data class Balance(val initialValue: Int = 0) {
+data class Balance(private val clock: Clock) {
+
+    val operations: MutableList<Operation> = mutableListOf()
 
     val value: Int
-        get() = operations.fold(initialValue)
+        get() = operations.fold(0)
         { acc, op ->
             when(op) {
                 is Deposit -> acc + op.amount
@@ -22,17 +24,15 @@ data class Balance(val initialValue: Int = 0) {
             }
         }
 
-    private val operations: MutableList<Operation> = mutableListOf()
-
     fun increaseBy(amount: Int) {
-        operations.add(Deposit(amount, LocalDateTime.now()))
+        operations.add(Deposit(amount, clock.now()))
     }
 
     fun decreaseBy(amount: Int) {
         if(value - amount < 0 ){
             throw WithdrawDenied()
         }
-        operations.add(Withdraw(amount, LocalDateTime.now()))
+        operations.add(Withdraw(amount, clock.now()))
     }
 }
 
