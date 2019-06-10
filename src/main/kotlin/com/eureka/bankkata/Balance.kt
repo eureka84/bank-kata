@@ -7,8 +7,7 @@ data class Balance(private val clock: Clock) {
     val operations: MutableList<Operation> = mutableListOf()
 
     val value: Int
-        get() = operations.fold(0)
-        { acc, op ->
+        get() = operations.fold(0) { acc, op ->
             when (op) {
                 is Operation.Deposit -> acc + op.amount
                 is Operation.Withdraw -> acc - op.amount
