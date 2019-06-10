@@ -1,4 +1,4 @@
-package com.eureka.katas
+package com.eureka.bankkata
 
 import java.lang.RuntimeException
 

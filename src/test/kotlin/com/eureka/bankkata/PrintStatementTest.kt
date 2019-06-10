@@ -1,4 +1,4 @@
-package com.eureka.katas
+package com.eureka.bankkata
 
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat

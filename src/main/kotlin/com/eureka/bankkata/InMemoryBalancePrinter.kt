@@ -1,4 +1,4 @@
-package com.eureka.katas
+package com.eureka.bankkata
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

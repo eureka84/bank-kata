@@ -1,4 +1,4 @@
-package com.eureka.katas
+package com.eureka.bankkata
 
 class Account(
     private val balancePrinter: BalancePrinter,

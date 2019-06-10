@@ -1,4 +1,4 @@
-package com.eureka.katas
+package com.eureka.bankkata
 
 import org.hamcrest.core.IsEqual.equalTo
 import org.junit.Assert.assertThat
