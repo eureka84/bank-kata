@@ -18,7 +18,7 @@ data class Balance(private val clock: Clock) {
     val value: Int
         get() = operations.fold(0)
         { acc, op ->
-            when(op) {
+            when (op) {
                 is Deposit -> acc + op.amount
                 is Withdraw -> acc - op.amount
             }
@@ -29,7 +29,7 @@ data class Balance(private val clock: Clock) {
     }
 
     fun decreaseBy(amount: Int) {
-        if(value - amount < 0 ){
+        if (value - amount < 0) {
             throw WithdrawDenied()
         }
         operations.add(Withdraw(amount, clock.now()))
