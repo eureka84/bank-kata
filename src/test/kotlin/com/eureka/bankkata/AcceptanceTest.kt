@@ -18,9 +18,9 @@ class AcceptanceTest {
     @Test
     fun `full interaction`() {
 
-        val display = InMemoryBalancePrinter()
+        val balancePrinter = InMemoryBalancePrinter()
 
-        val account = Account(display, Balance(clock))
+        val account = Account(balancePrinter, Balance(clock))
 
         account.deposit(1000) // on 10-01-2012
         account.deposit(2000) // on 13-01-2012
@@ -29,7 +29,7 @@ class AcceptanceTest {
         account.printStatement()
 
         assertThat(
-            display.printedLines(), equalTo(
+            balancePrinter.printedLines(), equalTo(
                 "Date || Amount || Balance\\n"+
                 "14/01/2012 || -500 || 2500\\n" +
                 "13/01/2012 || 2000 || 3000\\n" +

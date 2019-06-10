@@ -28,12 +28,17 @@ class InMemoryBalancePrinter : BalancePrinter {
                 }
             }
         }
+        lines = lines.asReversed()
     }
 
     fun printedLines(): String =
-        lines.asReversed().joinToString(separator = "\\n", prefix = "Date || Amount || Balance\\n")
-        { (date, amount, balance) ->
-            "${date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))} || $amount || $balance"
+        DateTimeFormatter.ofPattern(DATE_PATTERN).let { dateTimeFormatter ->
+            lines.joinToString(separator = "\\n", prefix = HEADER) { (date, amount, balance) ->
+                "${date.format(dateTimeFormatter)} || $amount || $balance"
+            }
         }
 
 }
+
+const val DATE_PATTERN = "dd/MM/yyyy"
+const val HEADER = "Date || Amount || Balance\\n"
