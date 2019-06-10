@@ -1,5 +1,6 @@
-package com.eureka.bankkata
+package com.eureka.bankkata.stubs
 
+import com.eureka.bankkata.Clock
 import java.time.LocalDateTime
 
 class SequentialClock(private vararg val dates: LocalDateTime) : Clock {

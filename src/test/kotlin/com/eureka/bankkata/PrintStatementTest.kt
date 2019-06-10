@@ -1,5 +1,6 @@
 package com.eureka.bankkata
 
+import com.eureka.bankkata.stubs.FixedClock
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
