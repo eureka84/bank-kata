@@ -17,7 +17,7 @@ class InMemoryBalancePrinter : BalancePrinter {
         balance.operations.fold(0) { acc, op ->
             when (op) {
                 is Balance.Operation.Deposit -> {
-                    (op.amount + acc).also { newBalance ->
+                    (acc + op.amount).also { newBalance ->
                         lines.add(StatementLine(op.date, "${op.amount}", newBalance))
                     }
                 }
