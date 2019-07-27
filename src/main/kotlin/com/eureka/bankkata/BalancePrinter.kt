@@ -7,9 +7,9 @@ interface BalancePrinter {
     fun print(balance: Balance)
 }
 
-class InMemoryBalancePrinter : BalancePrinter {
+data class StatementLine(val date: LocalDateTime, val amount: String, val balance: Int)
 
-    data class StatementLine(val date: LocalDateTime, val amount: String, val balance: Int)
+class InMemoryBalancePrinter : BalancePrinter {
 
     private var lines: MutableList<StatementLine> = mutableListOf()
 
