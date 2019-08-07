@@ -9,17 +9,19 @@ class DepositIntoAccountTest {
 
     @Test
     fun `single deposit`() {
-        val account = Account(InMemoryBalancePrinter(), Balance())
+        val balance = Balance()
+        val account = Account(InMemoryBalancePrinter(), balance)
         account.deposit(4)
-        assertThat(Balance().value, equalTo(4))
+        assertThat(balance.value, equalTo(4))
     }
 
     @Test
     fun `multiple deposit`() {
-        val account = Account(InMemoryBalancePrinter(), Balance())
+        val balance = Balance()
+        val account = Account(InMemoryBalancePrinter(), balance)
         account.deposit(4)
         account.deposit(7)
-        assertThat(Balance().value, equalTo(11))
+        assertThat(balance.value, equalTo(11))
     }
 
 }
