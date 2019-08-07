@@ -14,16 +14,16 @@ class InMemoryBalancePrinter : BalancePrinter {
     private var lines: MutableList<StatementLine> = mutableListOf()
 
     override fun print(balance: Balance) {
-        balance.operations.fold(0) { acc, op ->
-            when (op) {
+        balance.operations.fold(0) { acc, operation ->
+            when (operation) {
                 is Balance.Operation.Deposit -> {
-                    (acc + op.amount).also { newBalance ->
-                        lines.add(StatementLine(op.date, "${op.amount}", newBalance))
+                    (acc + operation.amount).also { newBalance ->
+                        lines.add(StatementLine(operation.date, "${operation.amount}", newBalance))
                     }
                 }
                 is Balance.Operation.Withdraw -> {
-                    (acc - op.amount).also { newBalance ->
-                        lines.add(StatementLine(op.date, "-${op.amount}", newBalance))
+                    (acc - operation.amount).also { newBalance ->
+                        lines.add(StatementLine(operation.date, "-${operation.amount}", newBalance))
                     }
                 }
             }

@@ -1,5 +1,6 @@
 package com.eureka.bankkata
 
+import java.lang.RuntimeException
 import java.time.LocalDateTime
 
 data class Balance(private val clock: Clock) {
@@ -32,6 +33,9 @@ data class Balance(private val clock: Clock) {
         data class Deposit(override val amount: Int, override val date: LocalDateTime) : Operation()
         data class Withdraw(override val amount: Int, override val date: LocalDateTime) : Operation()
     }
+
+    class WithdrawDenied : RuntimeException("You don't have enough money on your account")
 }
+
 
 

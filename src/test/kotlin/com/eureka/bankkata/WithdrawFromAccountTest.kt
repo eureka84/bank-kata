@@ -17,7 +17,7 @@ class WithdrawFromAccountTest {
         val balance = Balance(DefaultClock())
         val account = Account(InMemoryBalancePrinter(), balance)
 
-        expectException.expect(WithdrawDenied::class.java)
+        expectException.expect(Balance.WithdrawDenied::class.java)
 
         account.withdraw(4)
     }
@@ -27,7 +27,7 @@ class WithdrawFromAccountTest {
         val balance = Balance(DefaultClock())
         val account = Account(InMemoryBalancePrinter(), balance)
 
-        expectException.expect(WithdrawDenied::class.java)
+        expectException.expect(Balance.WithdrawDenied::class.java)
 
         account.deposit(2)
         account.withdraw(4)
