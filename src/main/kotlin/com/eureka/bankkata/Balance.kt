@@ -3,7 +3,7 @@ package com.eureka.bankkata
 import java.lang.RuntimeException
 import java.time.LocalDateTime
 
-data class Balance(private val clock: Clock) {
+data class Balance(private val clock: Clock = DefaultClock()) {
 
     val operations: MutableList<Operation> = mutableListOf()
 

@@ -14,8 +14,7 @@ class WithdrawFromAccountTest {
 
     @Test
     fun `withdraw on zero balance`() {
-        val balance = Balance(DefaultClock())
-        val account = Account(InMemoryBalancePrinter(), balance)
+        val account = Account(InMemoryBalancePrinter(), Balance())
 
         expectException.expect(Balance.WithdrawDenied::class.java)
 
@@ -24,8 +23,7 @@ class WithdrawFromAccountTest {
 
     @Test
     fun `withdraw of unavailable amount`() {
-        val balance = Balance(DefaultClock())
-        val account = Account(InMemoryBalancePrinter(), balance)
+        val account = Account(InMemoryBalancePrinter(), Balance())
 
         expectException.expect(Balance.WithdrawDenied::class.java)
 
@@ -35,7 +33,7 @@ class WithdrawFromAccountTest {
 
     @Test
     fun `withdraw of available amount`() {
-        val balance = Balance(DefaultClock())
+        val balance = Balance()
         val account = Account(InMemoryBalancePrinter(), balance)
 
         account.deposit(6)

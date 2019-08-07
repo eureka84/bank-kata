@@ -21,7 +21,7 @@ class PrintStatementTest {
     @Test
     fun `statement of a newly created empty account`() {
         val display = InMemoryBalancePrinter()
-        val account = Account(balancePrinter = display, balance = Balance(clock))
+        val account = Account(display, Balance(clock))
 
         account.printStatement()
 
@@ -31,7 +31,7 @@ class PrintStatementTest {
     @Test
     fun `statement for an account with one deposit`() {
         val display = InMemoryBalancePrinter()
-        val account = Account(display, balance = Balance(clock))
+        val account = Account(display, Balance(clock))
 
         account.deposit(1000)
 
